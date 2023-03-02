@@ -1,9 +1,13 @@
 // Short C++ project for school's c++ advanced features-course
 // Mygrep CLI-program heavily inspired from the linux CLI grep-program
 
+#include<iostream>
 #include<string>
 #include<fstream>
 
+using std::cin;
+using std::cout;
+using std::endl;
 using std::string;
 using std::to_string;
 using std::ifstream;
