@@ -42,7 +42,7 @@ void grepFromString() {
     }
     
     // format and output the message
-    cout << "\n\n" << output_string << "\n\n";
+    cout << endl << output_string << endl;
 }
 
 
@@ -51,7 +51,6 @@ void grepFromFile(string search_string, string filename) {
     // search string is the search "term"
     // string for output message
     string output_string, line;
-    int count = 0;
 
     // initialize input file variable
     ifstream data_file(filename, ifstream::in);
@@ -69,7 +68,6 @@ void grepFromFile(string search_string, string filename) {
             {
                 // print out the line
                 cout << line << endl;
-                count++;
             }
             // read the next line
             getline(data_file, line);
@@ -80,14 +78,64 @@ void grepFromFile(string search_string, string filename) {
         // print out error message
         cout << "\nError opening the file...\n";
     }
-    cout << "\n\n############################################################" << endl;
-    cout << "\t\t\"" + search_string + "\" found in " << count << " lines" << endl;
-    cout << "############################################################" << endl;
+}
+
+
+// overloaded function with options searches user input from file
+void grepFromFile(string options, string search_string, string filename) {
+    // search string is the search "term"
+    // string for output message
+    string output_string, line;
+    int found_count = 0, searched_count = 0;
+
+    // initialize input file variable
+    ifstream data_file(filename, ifstream::in);
+
+    // if file opened successfully
+    if (data_file.is_open())
+    {   
+        // read first line from file
+        getline(data_file, line);
+        searched_count++;
+        // loop to go through whole file
+        while (data_file)
+        {   
+            // if read line contains user input
+            if (line.find(search_string) != -1)
+            {   
+                // if options included line numbering
+                if (options == "-ol" || options == "-olo" || options == "-ool")
+                {
+                    // add the row number to the start of the line
+                    line = to_string(searched_count) + ":" + line;
+                }
+                // print out the line
+                cout << line << endl;
+                found_count++;
+            }
+            searched_count++;
+            // read the next line
+            getline(data_file, line);
+        }
+    // if file opening failed
+    } else
+    {   
+        // print out error message
+        cout << "\nError opening the file...\n";
+    }
+    // if options included occurrences
+    if (options == "-oo" || options == "-olo" || options == "-ool")
+    {
+        // print number of lines containing the search string
+        cout << "\nOccurrences of lines containing \"" + search_string + "\": " << found_count << endl;
+    }
 }
 
 
 int main(int argc, char **argv) {
-
+    // string for option arguments
+    string options;
+    
     // conditions for number of arguments
     switch (argc) {
     // 1 argument as in only main is called
@@ -100,7 +148,33 @@ int main(int argc, char **argv) {
         // call function to search given string from specified file
         grepFromFile(argv[1], argv[2]);
         break;
+    // 4 arguments
+    case 4:
+        // assign options from argv to variable
+        options = argv[1];
+        // check what switches were given
+        // if only o
+        cout << argv[1] << endl;
+        cout << options << endl;
+
+        if (options == "-o")
+        {
+            // give error message
+            cout << "No options were given...\n";
+        }
+        // if o and additional known options
+        else if (options == "-ol" || options == "-oo" || options == "-olo" || options == "-ool")
+        {
+            // call function with options
+            grepFromFile(options, argv[2], argv[3]);
+        }
+        else
+        {
+            cout << "Unknown option(s)...\n";
+        }
+        break;
     default:
+        cout << "Unknown amount of arguments...\n";
         break;
     }
     return 0;
