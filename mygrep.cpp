@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
         break;
     // 4 arguments
     case 4:
-        // assign options from argv to variable
+        // assign options from argument vector to variable
         options = argv[1];
         // check what switches were given
         // if only o
@@ -43,16 +43,19 @@ int main(int argc, char **argv) {
             cout << "No options were given...\n";
         }
         // if o and additional known options
-        else if (options == "-ol" || options == "-oo" || options == "-olo" || options == "-ool")
+        else if (options == "-ol" || options == "-oo" || options == "-olo")
         {
             // call function with options
             grepFromFile(options, argv[2], argv[3]);
         }
+        // if options given were aren't known
         else
         {
+            // give error message
             cout << "Unknown option(s)...\n";
         }
         break;
+    // if given argument amount is "wrong"
     default:
         cout << "Unknown amount of arguments...\n";
         break;
