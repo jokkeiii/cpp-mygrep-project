@@ -14,6 +14,10 @@ using std::string;
 using std::to_string;
 using std::ifstream;
 
+/*
+    TODO
+    - olori ohje eli esim. -oo tai -ol tai -or -ori -olri -olor
+*/
 
 int main(int argc, char **argv) {
     // string for option arguments
