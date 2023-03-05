@@ -4,7 +4,7 @@
 #include<string>
 #include<fstream>
 // headerfile
-#include<C:\Users\Tito\Documents\GitHub\cpp-mygrep-project-2\mygrep.cpp>
+#include<C:\Users\Tito\Documents\GitHub\cpp-mygrep-project-2\mygrep.h>
 
 using std::cin;
 using std::cout;
