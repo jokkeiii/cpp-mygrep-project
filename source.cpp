@@ -3,8 +3,8 @@
 #include<iostream>
 #include<string>
 #include<fstream>
-// header file
-#include<${workspaceFolder}/mygrep.h>
+// headerfile
+#include<C:\Users\Tito\Documents\GitHub\cpp-mygrep-project-2\mygrep.cpp>
 
 using std::cin;
 using std::cout;
