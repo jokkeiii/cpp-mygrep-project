@@ -4,8 +4,8 @@
 #include<iostream>
 #include<string>
 #include<fstream>
-// header-file
-#include<${workspaceFolder}/mygrep.h>
+// headerfile
+#include<C:\Users\Tito\Documents\GitHub\cpp-mygrep-project-2\mygrep.h>
 
 using std::cin;
 using std::cout;
@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
         break;
     // 4 arguments
     case 4:
-        // assign options from argument vector to variable
+        // assign options from argument vector to string variable
         options = argv[1];
         // check what switches were given
         // if only o
