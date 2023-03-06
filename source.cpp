@@ -1,4 +1,4 @@
-// functions for mygrep
+// functions for mygrep.cpp
 
 #include<iostream>
 #include<string>
@@ -119,16 +119,16 @@ void grepFromFile(string options, string search_string, string filename) {
             // read the next line
             getline(data_file, line);
         }
+        // if options included occurrences
+        if (options == "-oo" || options == "-olo" || options == "-ool")
+        {
+            // print number of lines containing the search string
+            cout << "\nOccurrences of lines containing \"" + search_string + "\": " << found_count << endl;
+        }
     // if file opening failed
     } else
     {   
         // print out error message
         cout << "\nError opening the file...\n";
-    }
-    // if options included occurrences
-    if (options == "-oo" || options == "-olo" || options == "-ool")
-    {
-        // print number of lines containing the search string
-        cout << "\nOccurrences of lines containing \"" + search_string + "\": " << found_count << endl;
     }
 }
