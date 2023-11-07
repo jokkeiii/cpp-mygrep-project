@@ -1,1 +1,8 @@
 .vscode
+
+# py venv
+lib/**
+lib64
+bin/**
+include/**
+*.cfg
